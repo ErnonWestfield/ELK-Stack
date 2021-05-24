@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #Create a folder for data and text files
- mkdir ~/backup/{freemem,diskuse,openlist,freedisk}
+mkdir ~/backup/{freemem,diskuse,openlist,freedisk}
 
 #Free memory output to a free_mem.txt file
 free -h > ~/backup/freemem/free_mem.txt
