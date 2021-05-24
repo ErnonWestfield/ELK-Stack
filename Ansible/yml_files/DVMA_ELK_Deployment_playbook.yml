@@ -89,7 +89,7 @@
       systemd:
         name: docker
         enabled: yes
-        ---
+        
 - name: Configure Elk VM with Docker
   hosts: elk
   remote_user: azadmin

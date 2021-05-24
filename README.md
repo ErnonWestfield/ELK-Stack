@@ -63,19 +63,16 @@ A summary of the access policies in place can be found in the table below.
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because there is very little effort in launching and deploying a network.
-- _TODO: What is the main advantage of automating configuration with Ansible?_
 
 The playbook implements the following tasks:
 
-Installs Docker.io
-Installs pip3 & the Python Docker Module
-Allows and executes an increase in Virtual Memory
-Downloads & launches the ELK container image, then opens the appropriate ports
-Enables that ELK runs every time the machine is booted
-
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Uninstall apache3
+- Installs docker.io
+- Installs pip3
+- Install Python Docker Module
+- Increase in Virtual Memory and initiates the use of all of the Virtual Memory
+- Download and run ELK-VM, then opens the corresponding ports
+- Enables service docker on boot
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -83,38 +80,24 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+- The web servers' internal IP addresses are 10.1.0.5, 10.1.0.8 and 10.1.0.10
 
 We have installed the following Beats on these machines:
 
-Installed Filebeat & Metricbeat on each machine
-
-
-- _TODO: Specify which Beats you successfully installed_
+- Installed Filebeat and Metricbeat on each of the webservers
 
 These Beats allow us to collect the following information from each machine:
 
-Filebeat collects log data which allows us to monitor traffic on the devices.
-Metricbeat collects data from servers such as OS data, CPU or memory data, or data about anything running on the server.
-
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Filebeat collects log data so the three web servers' traffic can be monitered.
+- Metricbeat collects data from web servers such as machine OS, CPU information and everything running on the servers.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
 
-Copy the Deployment-playbook.yml file to /etc/ansible/roles
-Update the /etc/ansible/ansible.cfg file to include the remote_user=(USERNAME FOR ADMIN OF EACH VIRTUAL MACHINE)
-Update the /etc/ansible/hosts file to include the IP address in the webservers & ELK groups. Make certain to uncomment the webservers selection & add the ELK section so it will work
-Run the playbook, and navigate to 52.188.120.165:5601/app/kibana to check that the installation worked as expected.
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
-
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
-
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+- Copy the DVMA_ELK_Deployment_playbook file to /etc/ansible/roles
+- Update the /etc/ansible/hosts file to include the IP addresses in the webservers and ELK groups. *Make certain to un-comment the "webservers" header and append an "ELK" section so configurations will be activated.
+- Update the /etc/ansible/ansible.cfg file, un-comment the "remote_user = <user-name-for-web-VMs>" *ensure to include the correct user name for all of your webservers.
+- Run the ansible-playbook command on the DVMA_ELK_Deployment_playbook yml file.
+- Navigate to the url "104.43.192.206:5601/app/kibana" to verify if all installations were successful.
