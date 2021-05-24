@@ -67,8 +67,8 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 The playbook implements the following tasks:
 
 - Uninstall apache3
-- Installs docker.io
-- Installs pip3
+- Install docker.io
+- Install pip3
 - Install Python Docker Module
 - Increase in Virtual Memory and initiates the use of all of the Virtual Memory
 - Download and run ELK-VM, then opens the corresponding ports
@@ -89,15 +89,17 @@ We have installed the following Beats on these machines:
 These Beats allow us to collect the following information from each machine:
 
 - Filebeat collects log data so the three web servers' traffic can be monitered.
-- Metricbeat collects data from web servers such as machine OS, CPU information and everything running on the servers.
+- Metricbeat collects data from the webservers such as OS, CPU information and everything running on the servers.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
 
-- Copy the DVMA_ELK_Deployment_playbook file to /etc/ansible/roles
-- Update the /etc/ansible/hosts file to include the IP addresses in the webservers and ELK groups. *Make certain to un-comment the "webservers" header and append an "ELK" section so configurations will be activated.
-- Update the /etc/ansible/ansible.cfg file, un-comment the "remote_user = <user-name-for-web-VMs>" *ensure to include the correct user name for all of your webservers.
+- Copy the DVMA_ELK_Deployment_playbook file to /etc/ansible/roles.
+- Update the /etc/ansible/hosts file to include the IP addresses in the webservers and ELK groups. 
+*Make certain to un-comment the "webservers" header and append an "ELK" section so configurations will be activated.
+- Update the /etc/ansible/ansible.cfg file, un-comment the "remote_user = <user-name-for-web-VMs>" 
+*ensure to include the correct user name for all of your webservers.
 - Run the ansible-playbook command on the DVMA_ELK_Deployment_playbook yml file.
 - Navigate to the url "104.43.192.206:5601/app/kibana" to verify if all installations were successful.
